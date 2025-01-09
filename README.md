@@ -322,18 +322,18 @@ add foreign key(emp_id) references info_data(emp_id);
 
 #### All KPI Count
 
-##### 1. Write a SQL query to count the total number of employees?
+#### 1. Write a SQL query to count the total number of employees?
 ```sql
 select count(Emp_Count) as Total_Employees from info_data;
 ```
-##### 2. Write a SQL query to calculate the average age of employees who have left the organization?
+#### 2. Write a SQL query to calculate the average age of employees who have left the organization?
 ```sql
 select round(avg(Age)) as Total_Attrition_by_Average_Age from info_data
 where Emp_ID in
 (select Emp_ID from info_data
 where Attrition = 'Inactive');
 ```
-##### 3. Write a SQL query to calculate the total attrition rate and its percentage value?
+#### 3. Write a SQL query to calculate the total attrition rate and its percentage value?
 ```sql
 -- (We have to use alias (eg. sub) in subquery.)
 select Total_Employees_Attrition_Count,
@@ -343,7 +343,7 @@ from (select Attrition,
 from info_data
 where Attrition = 'Inactive') as sub;
 ```
-##### 4. Write a SQL query to calculate the total count of active employees?
+#### 4. Write a SQL query to calculate the total count of active employees?
 ```sql
 select Total_Active_Employees,
        concat(round(100 * (Total_Active_Employees / (select count(*) from info_data)), 2), "%") as Percentage
@@ -352,7 +352,7 @@ from (select Attrition,
 from info_data
 where Attrition = 'Active') as sub;
 ```
-##### 5. Write a SQL query to calculate the total attrition count by high-performing employees?
+#### 5. Write a SQL query to calculate the total attrition count by high-performing employees?
 ```sql
 select count(*) as Total_Attrition_by_High_Performance
 from man_survey_data m, info_data i
@@ -360,7 +360,7 @@ where i.Emp_ID = m.Emp_ID
 and Attrition = 'Inactive'
 and Perf_Rating = 'Very Good';
 ```
-##### 6. Write a SQL query to calculate the total attrition count by low-performing employees?
+#### 6. Write a SQL query to calculate the total attrition count by low-performing employees?
 ```sql
 select count(*) as Total_Attrition_by_Low_Performance
 from man_survey_data m, info_data i
@@ -369,7 +369,7 @@ and Attrition = 'Inactive'
 and Perf_Rating = 'Good';
 ```
 #### Attrition by different categories
-##### 7. Write a SQL query to calculate the total attrition count by age group and gender?
+#### 7. Write a SQL query to calculate the total attrition count by age group and gender?
 ```sql
 select case
 	   when age between 18 and 25 then '18-25'
@@ -386,7 +386,7 @@ select case
 group by Age_Group, Gender
 order by Age_Group;
 ```
-##### 8. Write a SQL query to calculate the total attrition count by department?
+#### 8. Write a SQL query to calculate the total attrition count by department?
 ```sql
 select Department, Employees_Count,
        concat(round(100 * (Employees_Count / (select count(*) from info_data)), 2), "%") as Percentage
@@ -396,7 +396,7 @@ from info_data
 where Attrition = 'Inactive'
 group by Department) as sub;
 ```
-##### 9. Write a SQL query to calculate the total attrition count by level of education?
+#### 9. Write a SQL query to calculate the total attrition count by level of education?
 ```sql
 select Education, count(Education) as Employees_Count from info_data
 where Emp_ID in
@@ -404,7 +404,7 @@ where Emp_ID in
 where Attrition = 'Inactive')
 group by Education;
 ```
-##### 10. Write a SQL query to calculate the total attrition count by gender?
+#### 10. Write a SQL query to calculate the total attrition count by gender?
 ```sql
 select Gender, Employees_Count,
        concat(round(100 * (Employees_Count / (select count(*) from info_data)), 2), "%") as Percentage
@@ -414,7 +414,7 @@ from info_data
 where Attrition = 'Inactive'
 group by Gender) as sub;
 ```
-##### 11. Write a SQL query to calculate the total attrition count by salary range?
+#### 11. Write a SQL query to calculate the total attrition count by salary range?
 ```sql
 select case
 	   when Monthly_Income between 10000 and 20000 then '10K-20K'
@@ -430,7 +430,7 @@ select case
 group by Salary_Range
 order by Salary_Range;
 ```
-##### 12. Write a SQL query to calculate the total attrition count by job role?
+#### 12. Write a SQL query to calculate the total attrition count by job role?
 ```sql
 select Job_Role, count(job_role) as Employees_Count from info_data
 where Emp_ID in
@@ -438,7 +438,7 @@ where Emp_ID in
 where Attrition = 'Inactive')
 group by Job_Role;
 ```
-##### 13. Write a SQL query to calculate the total attrition count by field of study?
+#### 13. Write a SQL query to calculate the total attrition count by field of study?
 ```sql
 select Edu_Field as Education_Field , count(*) as Employees_Count from info_data
 where Emp_ID in
@@ -446,7 +446,7 @@ where Emp_ID in
 where Attrition = 'Inactive')
 group by Edu_Field;
 ```
-##### 14. Write a SQL query to calculate the total attrition count by marital status?
+#### 14. Write a SQL query to calculate the total attrition count by marital status?
 ```sql
 select Marital_Status, Employees_Count,
        concat(round(100 * (Employees_Count / (select count(*) from info_data)), 2), "%") as Percentage
@@ -456,7 +456,7 @@ from info_data
 where Attrition = 'Inactive'
 group by Marital_Status) as sub;
 ```
-##### 15. Write a SQL query to determine the distribution of job satisfaction ratings across all employees?
+#### 15. Write a SQL query to determine the distribution of job satisfaction ratings across all employees?
 ```sql
 select Job_Satisfaction, Employees_Count, 
        concat(round(100 * (Employees_Count / (select count(*) from info_data)), 2), "%") as Percentage
