@@ -130,7 +130,7 @@ where Department = 'NA';
 select education from info_data
 where Education = 1111111111;
 
--- (Before changing the column records, we have to check or change datatype for that column, otherwise it shows datatype error)
+-- (Before modifying the column records, we must verify or change the data type of that column to avoid a data type mismatch error.)
 -- (eg. Text --> int, int --> text)
 -- Change Datatype of "Education" column.
 alter table info_data
