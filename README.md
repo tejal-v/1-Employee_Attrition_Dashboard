@@ -317,7 +317,7 @@ add foreign key(emp_id) references info_data(emp_id);
 #### Questions and Answers
 
 #### Problem Statement
-- XYZ company has 4410 employees and around 15% of employees leave the company every year, how to reduce the level of attrition to 5-10% within 12 months so most of the employees will stay?
+- XYZ company has 4410 employees, with an annual attrition rate of 15%. To improve employee retention, what strategies can be implemented to reduce the attrition rate to 5-10% within the next 12 months, thereby increasing overall employee retention?
 - To find the right method to reduce the level of attrition from 15% to 5-10% for the next 12 months.
 
 #### All KPI Count
@@ -330,18 +330,18 @@ select count(Emp_Count) as Total_Employees from info_data;
 ```sql
 select round(avg(Age)) as Total_Attrition_by_Average_Age from info_data
 where Emp_ID in
-(select Emp_ID from info_data
-where Attrition = 'Inactive');
+             (select Emp_ID from info_data
+              where Attrition = 'Inactive');
 ```
 #### 3. Write a SQL query to calculate the total attrition rate and its percentage value?
 ```sql
--- (We have to use alias (eg. sub) in subquery.)
+-- (We must use alias (eg. sub) in subquery)
 select Total_Employees_Attrition_Count,
        concat(round(100 * (Total_Employees_Attrition_Count / (select count(*) from info_data)), 2), "%") as Percentage
 from (select Attrition, 
       count(*) as Total_Employees_Attrition_Count
-from info_data
-where Attrition = 'Inactive') as sub;
+      from info_data
+      where Attrition = 'Inactive') as sub;
 ```
 #### 4. Write a SQL query to calculate the total count of active employees?
 ```sql
@@ -349,8 +349,8 @@ select Total_Active_Employees,
        concat(round(100 * (Total_Active_Employees / (select count(*) from info_data)), 2), "%") as Percentage
 from (select Attrition, 
       count(*) as Total_Active_Employees
-from info_data
-where Attrition = 'Active') as sub;
+      from info_data
+      where Attrition = 'Active') as sub;
 ```
 #### 5. Write a SQL query to calculate the total attrition count by high-performing employees?
 ```sql
@@ -381,8 +381,8 @@ select case
 	   gender, count(*) as Employees_Count
 	   from info_data
 	   where Emp_ID in
-       (select Emp_ID from info_data
-	    where Attrition = 'Inactive')
+                       (select Emp_ID from info_data
+                        where Attrition = 'Inactive')
 group by Age_Group, Gender
 order by Age_Group;
 ```
@@ -390,29 +390,27 @@ order by Age_Group;
 ```sql
 select Department, Employees_Count,
        concat(round(100 * (Employees_Count / (select count(*) from info_data)), 2), "%") as Percentage
-from (select Department, 
-      count(*) as Employees_Count
-from info_data
-where Attrition = 'Inactive'
-group by Department) as sub;
+from (select Department, count(*) as Employees_Count
+      from info_data
+      where Attrition = 'Inactive'
+      group by Department) as sub;
 ```
 #### 9. Write a SQL query to calculate the total attrition count by level of education?
 ```sql
 select Education, count(Education) as Employees_Count from info_data
 where Emp_ID in
-(select Emp_ID from info_data
-where Attrition = 'Inactive')
+            (select Emp_ID from info_data
+             where Attrition = 'Inactive')
 group by Education;
 ```
 #### 10. Write a SQL query to calculate the total attrition count by gender?
 ```sql
 select Gender, Employees_Count,
        concat(round(100 * (Employees_Count / (select count(*) from info_data)), 2), "%") as Percentage
-from (select Gender, 
-      count(*) as Employees_Count
-from info_data
-where Attrition = 'Inactive'
-group by Gender) as sub;
+from (select Gender, count(*) as Employees_Count
+      from info_data
+      where Attrition = 'Inactive'
+      group by Gender) as sub;
 ```
 #### 11. Write a SQL query to calculate the total attrition count by salary range?
 ```sql
@@ -420,13 +418,13 @@ select case
 	   when Monthly_Income between 10000 and 20000 then '10K-20K'
 	   when Monthly_Income between 20001 and 50000 then '20K-50K'
 	   when Monthly_Income between 50001 and 100000 then '50K-100K'
-       when Monthly_Income between 100001 and 150000 then '100K-150K'
+           when Monthly_Income between 100001 and 150000 then '100K-150K'
 	   else '150K+'
 	   end as Salary_Range, count(*) as Employees_Count
 	   from info_data
 	   where Emp_ID in
-       (select Emp_ID from info_data
-	    where Attrition = 'Inactive')
+                       (select Emp_ID from info_data
+	                where Attrition = 'Inactive')
 group by Salary_Range
 order by Salary_Range;
 ```
@@ -434,27 +432,26 @@ order by Salary_Range;
 ```sql
 select Job_Role, count(job_role) as Employees_Count from info_data
 where Emp_ID in
-(select Emp_ID from info_data
-where Attrition = 'Inactive')
+            (select Emp_ID from info_data
+             where Attrition = 'Inactive')
 group by Job_Role;
 ```
 #### 13. Write a SQL query to calculate the total attrition count by field of study?
 ```sql
 select Edu_Field as Education_Field , count(*) as Employees_Count from info_data
 where Emp_ID in
-(select Emp_ID from info_data
-where Attrition = 'Inactive')
+            (select Emp_ID from info_data
+             where Attrition = 'Inactive')
 group by Edu_Field;
 ```
 #### 14. Write a SQL query to calculate the total attrition count by marital status?
 ```sql
 select Marital_Status, Employees_Count,
        concat(round(100 * (Employees_Count / (select count(*) from info_data)), 2), "%") as Percentage
-from (select Marital_Status, 
-      count(*) as Employees_Count
-from info_data
-where Attrition = 'Inactive'
-group by Marital_Status) as sub;
+from (select Marital_Status, count(*) as Employees_Count
+      from info_data
+      where Attrition = 'Inactive'
+      group by Marital_Status) as sub;
 ```
 #### 15. Write a SQL query to determine the distribution of job satisfaction ratings across all employees?
 ```sql
@@ -466,3 +463,13 @@ from (select Job_Satis as Job_Satisfaction, count(*) as Employees_Count
 group by Job_Satisfaction
 order by Percentage desc;
 ```
+### Findings
+- Attrition Trends/Patterns: Examined employee attrition patterns by department, role, performance, age-group, gender, marital status and other relevant dimensions.
+- Employee Retention Programs:  Supported 26-35 age-group and low performers with career development workshops, mentorship.
+- Focus on Research and Development Field: Offer competitive compensation packages and growth opportunities.
+- Reward High Performers: Pay special attention to high-performing employees and offer them challenging assignments, career advancement opportunities, and recognition to aid in retention.
+
+### Conclusion
+- This project showcases database connectivity with Tableau, covering data importing, cleaning, EDA, and business-driven SQL queries.
+- The findings from this project can help inform business decisions by focusing on targeted retention programs and competitive offers.
+- These initiatives supported employee growth and significantly reduced attrition rates.
