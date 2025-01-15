@@ -1,5 +1,8 @@
 ## Employee_Attrition_Dashboard
 
+![Emp_Attr Dashboard Image](https://github.com/user-attachments/assets/3e50a475-d6ad-45a8-9dd3-a99f861ad8be)
+
+
 ### Project Overview
 - Created a Tableau dashboard with database integration.
 - Performing exploratory data analysis (EDA), and answering specific business questions through SQL queries.
