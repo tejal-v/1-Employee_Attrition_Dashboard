@@ -1,5 +1,5 @@
 ## Employee_Attrition_Dashboard
-#### SQL | Tableau
+SQL | Tableau
 
 ![Emp_Attr Dashboard Image](https://github.com/user-attachments/assets/3e50a475-d6ad-45a8-9dd3-a99f861ad8be)
 
@@ -15,8 +15,30 @@
 2) Data cleaning using queries: COUNT, Rename column, Trim, Change data type, Update records using case statement, Create Primary & Foreign key constraints.
 3) Data Analysis: Utilize SQL queries to examine employee data from various perspectives and identify key findings.
 
-#### Project Structure
+### Questions
+KPI
 
+1. Write a SQL query to count the total number of employees-(Total Employees)?
+2. Write a SQL query to calculate the average age of employees who have left the organization-(Attrition by Average Age)?
+3. Write a SQL query to calculate the total attrition rate and its percentage value-(Attrition Rate)?
+4. Write a SQL query to calculate the total count of active employees-(Total Active Employees)?
+5. Write a SQL query to calculate the total attrition count by high-performing employees-(Attrition by High Performance)?
+6. Write a SQL query to calculate the total attrition count by low-performing employees-(Attrition by Low Performance)?
+
+Attrition by different categories (Charts)
+
+7. Write a SQL query to calculate the total attrition count by age group and gender?
+8. Write a SQL query to calculate the total attrition count by department?
+9. Write a SQL query to calculate the total attrition count by level of education?
+10. Write a SQL query to calculate the total attrition count by gender?
+11. Write a SQL query to calculate the total attrition count by salary range?
+12. Write a SQL query to calculate the total attrition count by job role?
+13. Write a SQL query to calculate the total attrition count by field of study?
+14. Write a SQL query to calculate the total attrition count by marital status?
+15. Write a SQL query to determine the distribution of job satisfaction ratings across all employees?
+
+#### Project Structure
+##### Database - hr_data
 ```sql
 use hr_data;
 
