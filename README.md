@@ -1,5 +1,5 @@
 ## Employee_Attrition_Dashboard
-
+### SQL | Tableau
 
 ![Emp_Attr Dashboard Image](https://github.com/user-attachments/assets/3e50a475-d6ad-45a8-9dd3-a99f861ad8be)
 
